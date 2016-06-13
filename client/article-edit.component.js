@@ -1,6 +1,6 @@
 // article edit component
 
-import { Component, Input } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 
 import { ArticlesService } from './articles.service';
 
@@ -12,6 +12,7 @@ import template from './article-edit.template.html';
 })
 export class ArticleEditComponent {
     @Input() article;
+    @Output() onRemoved = new EventEmitter;
 
     constructor(articlesService: ArticlesService) {
       this.articlesService = articlesService;
@@ -26,7 +27,8 @@ export class ArticleEditComponent {
 
     remove() {
       this.articlesService.deleteArticle(this.article._id).then(articles => {
-        this.article = {};
+          this.article = null;
+	  this.onRemoved.emit();
       }).catch(error => this.error = error);
     }
 }

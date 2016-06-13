@@ -34,4 +34,8 @@ export class ArticlesComponent {
   onShow(article) {
     this.router.navigate(['Article', { id: article._id }]);
   }
+
+  onRemoved() {
+    this.fetchArticles();
+  }
 };

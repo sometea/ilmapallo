@@ -5,4 +5,4 @@
      <button type="button" class="btn btn-info" (click)="onShow(article)">Show</button>
    </li>
  </ul>
- <article-edit [article]="selectedArticle"></article-edit>
+ <article-edit [article]="selectedArticle" (onRemoved)="onRemoved()"></article-edit>
