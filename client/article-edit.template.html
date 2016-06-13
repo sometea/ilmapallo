@@ -1,0 +1,12 @@
+<div *ngIf="article">
+  <h2>{{ article.title }}</h2>
+  <textarea [(ngModel)]="article.text">
+  </textarea>
+  <button type="button" class="btn btn-primary" (click)="save()">Save</button>
+  <div *ngIf="error">
+    {{ error }}
+  </div>
+  <div *ngIf="statusMessage">
+    {{ statusMessage }}
+  </div>
+</div>

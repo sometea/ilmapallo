@@ -1,0 +1,8 @@
+<h2>Articles</h2>
+ <ul class="articles">
+   <li *ngFor="let article of articles">
+     <button type="button" class="btn" [class.btn-success]="article === selectedArticle" [class.btn-primary]="article !== selectedArticle" (click)="onSelect(article)">{{ article._id }}</button> {{ article.title }}
+     <button type="button" class="btn btn-info" (click)="onShow(article)">Show</button>
+   </li>
+ </ul>
+ <article-edit [article]="selectedArticle"></article-edit>

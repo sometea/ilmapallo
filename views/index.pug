@@ -1,0 +1,20 @@
+doctype html
+html
+  head
+    base(href='/')
+    title Ilmapallo 2
+    meta(name='description' content='A CMS based on Angular 2 and the MEAN stack')
+    meta(charset='utf-8')
+    meta(name='viewport' content='width=device-width,initial-scale=1.0')
+    style.
+      /* Initial CSS to prevent FOUC (Flash of Unstyled Content) */
+      .loading {
+        padding-top: 15px;
+        font-size: 36px;
+        font-family: Arial;
+        text-align: center;
+      }
+  body
+    my-app
+      .loading Loading...
+    script(src="/bundle.js")
