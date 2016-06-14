@@ -35,7 +35,14 @@ export class ArticlesComponent {
     this.router.navigate(['Article', { id: article._id }]);
   }
 
-  onRemoved() {
+  onNew() {
+    this.selectedArticle = {
+      title: 'New Article',
+      text: 'Insert text here.'
+    };
+  }
+
+  onRefresh() {
     this.fetchArticles();
   }
 };

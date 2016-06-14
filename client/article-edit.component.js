@@ -12,7 +12,7 @@ import template from './article-edit.template.html';
 })
 export class ArticleEditComponent {
     @Input() article;
-    @Output() onRemoved = new EventEmitter;
+    @Output() onRefresh = new EventEmitter;
 
     constructor(articlesService: ArticlesService) {
       this.articlesService = articlesService;
@@ -22,13 +22,19 @@ export class ArticleEditComponent {
       this.articlesService.saveArticle(this.article).then(article => {
         this.article = article;
         this.statusMessage = 'Saved article.';
+	this.onRefresh.emit();
       }).catch(error => this.error = error);
     }
 
-    remove() {
+  remove() {
+    if (this.article._id) {
       this.articlesService.deleteArticle(this.article._id).then(articles => {
           this.article = null;
-	  this.onRemoved.emit();
+	  this.onRefresh.emit();
       }).catch(error => this.error = error);
+    } else {
+      this.article = null;
+      this.onRefresh.emit();
     }
+  }
 }

@@ -1,8 +1,11 @@
 <h2>Articles</h2>
+ <button type="button" class="btn btn-primary" (click)="onNew()">New Article</button>
  <ul class="articles">
    <li *ngFor="let article of articles">
-     <button type="button" class="btn" [class.btn-success]="article === selectedArticle" [class.btn-primary]="article !== selectedArticle" (click)="onSelect(article)">{{ article._id }}</button> {{ article.title }}
-     <button type="button" class="btn btn-info" (click)="onShow(article)">Show</button>
+     {{ article.title }}
+     <button type="button" class="btn" [class.btn-success]="article === selectedArticle"
+	     [class.btn-primary]="article !== selectedArticle" (click)="onShow(article)">Show</button>
+     <button type="button" class="btn btn-primary" (click)="onSelect(article)">Edit</button>
    </li>
  </ul>
- <article-edit [article]="selectedArticle" (onRemoved)="onRemoved()"></article-edit>
+ <article-edit [article]="selectedArticle" (onRefresh)="onRefresh()"></article-edit>
