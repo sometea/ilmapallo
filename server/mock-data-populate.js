@@ -29,6 +29,7 @@ Article.remove({}, function(err) {
          process.exit(1);
        }
        console.log(article);
+       if (a === ARTICLES.slice(-1)[0]) process.exit(0);
      });
    };
 });
