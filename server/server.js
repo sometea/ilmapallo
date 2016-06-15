@@ -8,6 +8,7 @@ import logger from 'morgan';
 import methodOverride from 'method-override';
 import bodyParser from 'body-parser';
 import mongoose from 'mongoose';
+import passport from 'passport';
 
 import ArticleRouter from './routes/article.js';
 
@@ -21,6 +22,8 @@ mongoose.connection.on('error', function() {
   console.log('MongoDB Connection Error. Please make sure that MongoDB is running.');
   process.exit(1);
 });
+
+app.use(passport.initialize());
 
 app.use(express.static(path.join(__dirname, '..', 'public')));
 app.set('views', path.join(__dirname, '..', 'views')); // Set our views directory to be `/views`
