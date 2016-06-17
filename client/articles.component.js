@@ -9,9 +9,9 @@ import { ArticleEditComponent } from './article-edit.component';
 import template from './articles.template.html';
 
 @Component({
-   directives: [ArticleEditComponent],
-   selector: 'articles',
-   template: template
+  directives: [ArticleEditComponent],
+  selector: 'articles',
+  template,
 })
 export class ArticlesComponent {
   constructor(articlesService: ArticlesService, router: Router) {
@@ -20,7 +20,7 @@ export class ArticlesComponent {
   }
 
   fetchArticles() {
-    this.articlesService.getArticles().then(articles => this.articles = articles);
+    this.articlesService.getArticles().then(articles => { this.articles = articles; });
   }
 
   ngOnInit() {
@@ -38,11 +38,11 @@ export class ArticlesComponent {
   onNew() {
     this.selectedArticle = {
       title: 'New Article',
-      text: 'Insert text here.'
+      text: 'Insert text here.',
     };
   }
 
   onRefresh() {
     this.fetchArticles();
   }
-};
+}

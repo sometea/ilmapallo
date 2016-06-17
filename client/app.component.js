@@ -15,20 +15,20 @@ import { ArticlesService } from './articles.service';
     <h1>{{ title }}</h1>
     <a [routerLink]="['Articles']">Articles</a>
     <router-outlet></router-outlet>
-  `
+    `,
 })
 @RouteConfig([
   {
     path: '/articles',
     name: 'Articles',
     component: ArticlesComponent,
-    useAsDefault: true
+    useAsDefault: true,
   },
   {
     path: '/article/:id',
     name: 'Article',
-    component: ArticleDetailComponent
-  }
+    component: ArticleDetailComponent,
+  },
 ])
 export class AppComponent {
   title = 'Ilmapallo 2';

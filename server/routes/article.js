@@ -6,7 +6,7 @@ import ArticleController from '../controllers/article';
 
 import isAuthenticated from '../controllers/auth';
 
-let router = express.Router();
+const router = new express.Router();
 
 router.get('/', ArticleController.getArticles);
 router.get('/:id', ArticleController.getArticle);

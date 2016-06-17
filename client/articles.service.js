@@ -19,26 +19,27 @@ export class ArticlesService {
   }
 
   getArticle(id) {
-    return this.http.get(this.articlesUrl+id).toPromise()
+    return this.http.get(this.articlesUrl + id).toPromise()
                .then(response => response.json())
                .catch(this.handleError);
   }
 
   deleteArticle(id) {
-    return this.http.delete(this.articlesUrl+id).toPromise()
+    return this.http.delete(this.articlesUrl + id).toPromise()
                .then(response => response.json())
                .catch(this.handleError);
   }
 
   saveArticle(article) {
-    const headers = new Headers({'Content-Type': 'application/json'});
+    const headers = new Headers({ 'Content-Type': 'application/json' });
     if (article._id) {
-      return this.http.put(this.articlesUrl+article._id, JSON.stringify(article), {headers: headers})
-                 .toPromise().then(() => article).catch(this.handleError);
-    } else {
-      return this.http.post(this.articlesUrl, JSON.stringify(article), {headers: headers})
-                 .toPromise().then(() => article).catch(this.handleError);
+      return this.http.put(this.articlesUrl + article._id, JSON.stringify(article), { headers })
+        .toPromise().then(() => article)
+	.catch(this.handleError);
     }
+    return this.http.post(this.articlesUrl, JSON.stringify(article), { headers })
+      .toPromise().then(() => article)
+      .catch(this.handleError);
   }
 
   handleError(error) {

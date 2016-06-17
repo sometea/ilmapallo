@@ -2,9 +2,9 @@
 
 import mongoose from 'mongoose';
 
-let articleSchema = new mongoose.Schema({
+const articleSchema = new mongoose.Schema({
   title: String,
-  text: String
+  text: String,
 });
 
 export default mongoose.model('Article', articleSchema);

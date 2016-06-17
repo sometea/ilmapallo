@@ -14,7 +14,7 @@ import { ArticlesService } from './articles.service';
      {{ article.text }}
     </div>
   </div>
-  `
+    `,
 })
 export class ArticleDetailComponent {
   constructor(articlesService: ArticlesService, routeParams: RouteParams) {
@@ -24,6 +24,6 @@ export class ArticleDetailComponent {
 
   ngOnInit() {
     const id = this.routeParams.get('id');
-    this.articlesService.getArticle(id).then(article => this.article=article);
+    this.articlesService.getArticle(id).then(article => { this.article = article; });
   }
 }

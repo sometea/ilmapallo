@@ -11,7 +11,7 @@
     "webpack:w": "webpack --watch",
     "postinstall": "npm run webpack",
     "start": "node lib/server",
-    "prestart": "npm run lint && npm run babel && npm run webpack"
+    "prestart": "npm run babel && npm run webpack"
   },
   "author": "",
   "license": "ISC",
