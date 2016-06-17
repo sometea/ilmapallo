@@ -4,13 +4,14 @@
   "description": "A CMS based on Angular 2",
   "main": "index.js",
   "scripts": {
+    "lint": "eslint server/**/*.js client/**/*.js",
     "babel": "babel server --out-dir lib",
     "babel:w": "babel -w server --out-dir lib",
     "webpack": "webpack",
     "webpack:w": "webpack --watch",
     "postinstall": "npm run webpack",
     "start": "node lib/server",
-    "prestart": "npm run babel && npm run webpack"
+    "prestart": "npm run lint && npm run babel && npm run webpack"
   },
   "author": "",
   "license": "ISC",
@@ -47,5 +48,13 @@
     "systemjs": "latest",
     "webpack": "latest",
     "zone.js": "latest"
+  },
+  "devDependencies": {
+    "babel-eslint": "^6.0.4",
+    "eslint": "^2.12.0",
+    "eslint-config-airbnb": "^9.0.1",
+    "eslint-plugin-import": "^1.8.1",
+    "eslint-plugin-jsx-a11y": "^1.5.3",
+    "eslint-plugin-react": "^5.2.1"
   }
 }
