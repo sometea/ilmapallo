@@ -37,6 +37,7 @@
     "es6-shim": "latest",
     "express": "latest",
     "file-loader": "latest",
+    "js-base64": "^2.1.9",
     "mongoose": "latest",
     "passport": "^0.3.2",
     "passport-http": "^0.3.0",

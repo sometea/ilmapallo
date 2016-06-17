@@ -11,6 +11,7 @@
     "consistent-return": "off",
     "new-cap": "off",
     "max-len": "off",
-    "no-console": "off"
+    "no-console": "off",
+    "quote-props": "off"
   }
 }

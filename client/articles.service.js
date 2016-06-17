@@ -1,5 +1,6 @@
 // the article angular service
 
+// import { Base64 } from 'base64-js/base64';
 import { Injectable } from '@angular/core';
 import { Headers, Http } from '@angular/http';
 import 'rxjs/add/operator/toPromise';
@@ -31,18 +32,23 @@ export class ArticlesService {
   }
 
   saveArticle(article) {
-    const headers = new Headers({ 'Content-Type': 'application/json' });
+    const headers = new Headers({
+      'Content-Type': 'application/json',
+      'Authorization': 'Basic ' + window.btoa('user:user'),
+    });
+    let method = this.http.post;
+    let url = this.articlesUrl;
     if (article._id) {
-      return this.http.put(this.articlesUrl + article._id, JSON.stringify(article), { headers })
-        .toPromise().then(() => article)
-	.catch(this.handleError);
+      method = this.http.put;
+      url = url + article._id;
     }
-    return this.http.post(this.articlesUrl, JSON.stringify(article), { headers })
+    return this.http.put(url, JSON.stringify(article), { headers })
       .toPromise().then(() => article)
       .catch(this.handleError);
   }
 
   handleError(error) {
+    if (error.status === 401) console.log('Access denied');
     console.log('An error occurred', error);
     return Promise.reject(error.message || error);
   }
