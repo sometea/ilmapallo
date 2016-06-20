@@ -12,6 +12,7 @@
     "new-cap": "off",
     "max-len": "off",
     "no-console": "off",
-    "quote-props": "off"
+    "quote-props": "off",
+    "prefer-template": "off"
   }
 }

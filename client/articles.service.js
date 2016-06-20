@@ -34,7 +34,7 @@ export class ArticlesService {
   saveArticle(article) {
     const headers = new Headers({
       'Content-Type': 'application/json',
-      'Authorization': 'Basic ' + window.btoa('user:user'),
+      'Authorization': 'JWT ' + window.btoa('user:user'),
     });
     let method = this.http.post;
     let url = this.articlesUrl;
