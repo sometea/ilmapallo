@@ -1,5 +1,3 @@
-'use strict';
-
 // main express server for the backend
 
 import express from 'express';
@@ -11,6 +9,7 @@ import mongoose from 'mongoose';
 import passport from 'passport';
 
 import ArticleRouter from './routes/article.js';
+import AuthRouter from './routes/auth.js';
 
 let app = express();
 
@@ -38,6 +37,7 @@ app.get('/', (req, res) => {
 });
 
 app.use('/articles', ArticleRouter);
+app.use('/auth', AuthRouter);
 
 app.listen(app.get('port'), function() {
   console.log(`App listening on port ${app.get('port')}!`);

@@ -13,6 +13,7 @@
     "max-len": "off",
     "no-console": "off",
     "quote-props": "off",
-    "prefer-template": "off"
+    "prefer-template": "off",
+    "no-trailing-spaces": "off"
   }
 }

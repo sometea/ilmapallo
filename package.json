@@ -38,6 +38,7 @@
     "express": "latest",
     "file-loader": "latest",
     "js-base64": "^2.1.9",
+    "jsonwebtoken": "^7.0.1",
     "mongoose": "latest",
     "passport": "^0.3.2",
     "passport-jwt": "^2.0.0",

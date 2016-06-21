@@ -4,7 +4,7 @@ import express from 'express';
 
 import ArticleController from '../controllers/article';
 
-import isAuthenticated from '../controllers/auth';
+import { isAuthenticated } from '../controllers/auth';
 
 const router = new express.Router();
 

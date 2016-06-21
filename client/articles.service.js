@@ -1,16 +1,18 @@
 // the article angular service
 
-// import { Base64 } from 'base64-js/base64';
 import { Injectable } from '@angular/core';
 import { Headers, Http } from '@angular/http';
 import 'rxjs/add/operator/toPromise';
+
+import { LoginService } from './login.service';
 
 @Injectable()
 export class ArticlesService {
   articlesUrl = 'articles/';
 
-  constructor(http: Http) {
+  constructor(http: Http, loginService: LoginService) {
     this.http = http;
+    this.loginService = loginService;
   }
 
   getArticles() {
@@ -34,15 +36,16 @@ export class ArticlesService {
   saveArticle(article) {
     const headers = new Headers({
       'Content-Type': 'application/json',
-      'Authorization': 'JWT ' + window.btoa('user:user'),
+      'Authorization': this.loginService.getToken(),
     });
-    let method = this.http.post;
     let url = this.articlesUrl;
     if (article._id) {
-      method = this.http.put;
       url = url + article._id;
+      return this.http.put(url, JSON.stringify(article), { headers })
+        .toPromise().then(() => article)
+        .catch(this.handleError);
     }
-    return this.http.put(url, JSON.stringify(article), { headers })
+    return this.http.post(url, JSON.stringify(article), { headers })
       .toPromise().then(() => article)
       .catch(this.handleError);
   }
