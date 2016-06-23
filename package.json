@@ -9,7 +9,6 @@
     "babel:w": "babel -w server --out-dir lib",
     "webpack": "webpack",
     "webpack:w": "webpack --watch",
-    "postinstall": "npm run webpack",
     "start": "node lib/server",
     "prestart": "npm run babel && npm run webpack"
   },
@@ -39,7 +38,9 @@
     "file-loader": "latest",
     "js-base64": "^2.1.9",
     "jsonwebtoken": "^7.0.1",
+    "method-override": "latest",
     "mongoose": "latest",
+    "morgan": "latest",
     "passport": "^0.3.2",
     "passport-jwt": "^2.0.0",
     "pug": "latest",

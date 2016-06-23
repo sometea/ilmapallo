@@ -28,7 +28,8 @@ export class ArticlesService {
   }
 
   deleteArticle(id) {
-    return this.http.delete(this.articlesUrl + id).toPromise()
+    const headers = new Headers({ 'Authorization': this.loginService.getToken() });
+    return this.http.delete(this.articlesUrl + id, { headers }).toPromise()
                .then(response => response.json())
                .catch(this.handleError);
   }
