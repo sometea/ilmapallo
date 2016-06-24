@@ -17,6 +17,8 @@ import { LoginService } from './login.service';
     <h1>{{ title }}</h1>
     <a [routerLink]="['Articles']">Articles</a>
     <a [routerLink]="['Login']">Login</a>
+    <span *ngIf="loginService.isLoggedIn()">Logged in!</span>
+    <span *ngIf="!loginService.isLoggedIn()">Not logged in.</span>
     <router-outlet></router-outlet>
     `,
 })
@@ -40,4 +42,8 @@ import { LoginService } from './login.service';
 ])
 export class AppComponent {
   title = 'Ilmapallo 2';
+
+  constructor(loginService: LoginService) {
+    this.loginService = loginService;
+  }
 }
