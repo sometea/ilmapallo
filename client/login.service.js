@@ -23,7 +23,7 @@ export class LoginService {
     const headers = new Headers({
       'Content-Type': 'application/json',
     });
-    return this.http.post('/auth/authenticate', JSON.stringify({ username, password }),
+    return this.http.post('/api/auth/authenticate', JSON.stringify({ username, password }),
                           { headers }).toPromise()
                     .then(response => {
                       this.jwtToken = response.json().token;

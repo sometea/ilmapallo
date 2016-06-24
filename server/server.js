@@ -36,8 +36,13 @@ app.get('/', (req, res) => {
   res.render('index'); // Compiles the file named "index" in the views directory (`/views`) using the view engine (Jade).
 });
 
-app.use('/articles', ArticleRouter);
-app.use('/auth', AuthRouter);
+app.use('/api/articles', ArticleRouter);
+app.use('/api/auth', AuthRouter);
+
+// Redirect all other (html5)-urls to angular 2:
+app.get('/*', (req, res) => {
+  res.render('index');
+});
 
 app.listen(app.get('port'), function() {
   console.log(`App listening on port ${app.get('port')}!`);

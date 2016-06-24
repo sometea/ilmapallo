@@ -8,7 +8,7 @@ import { LoginService } from './login.service';
 
 @Injectable()
 export class ArticlesService {
-  articlesUrl = 'articles/';
+  articlesUrl = '/api/articles/';
 
   constructor(http: Http, loginService: LoginService) {
     this.http = http;
