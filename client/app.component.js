@@ -16,8 +16,9 @@ import { LoginService } from './login.service';
   template: `
     <h1>{{ title }}</h1>
     <a [routerLink]="['Articles']">Articles</a>
-    <a [routerLink]="['Login']">Login</a>
-    <span *ngIf="loginService.isLoggedIn()">Logged in!</span>
+    <a [routerLink]="['Login']" *ngIf="!loginService.isLoggedIn()">Log in</a>
+    <a [routerLink]="['Logout']" (click)="logout()" *ngIf="loginService.isLoggedIn()">Log out</a>
+    <span *ngIf="loginService.isLoggedIn()">Logged in as {{ loginService.getUser().username }}!</span>
     <span *ngIf="!loginService.isLoggedIn()">Not logged in.</span>
     <router-outlet></router-outlet>
     `,
@@ -39,11 +40,20 @@ import { LoginService } from './login.service';
     name: 'Login',
     component: LoginComponent,
   },
+  {
+    path: '/logout',
+    name: 'Logout',
+    component: ArticlesComponent,
+  },
 ])
 export class AppComponent {
   title = 'Ilmapallo 2';
 
   constructor(loginService: LoginService) {
     this.loginService = loginService;
+  }
+
+  logout() {
+    this.loginService.logout();
   }
 }

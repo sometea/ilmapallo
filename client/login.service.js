@@ -9,6 +9,10 @@ export class LoginService {
   constructor(http: Http) {
     this.http = http;
     this.jwtToken = '';
+    this.user = {
+      username: '',
+      password: '',
+    };
   }
 
   isLoggedIn() {
@@ -19,6 +23,11 @@ export class LoginService {
     return this.jwtToken;
   }
 
+  getUser() {
+    // To do: get the user information directly by decoding the JWT token
+    return this.user;
+  }
+
   login(username, password) {
     const headers = new Headers({
       'Content-Type': 'application/json',
@@ -27,9 +36,16 @@ export class LoginService {
                           { headers }).toPromise()
                     .then(response => {
                       this.jwtToken = response.json().token;
+                      this.user.username = username;
+                      this.user.password = password;
                       return this.jwtToken;
                     })
-             .catch(this.handleError);
+                    .catch(this.handleError);
+  }
+
+  logout() {
+    this.jwtToken = '';
+    return this.jwtToken;
   }
 
   handleError(error) {
