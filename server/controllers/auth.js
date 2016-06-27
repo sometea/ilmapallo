@@ -4,6 +4,8 @@ import passport from 'passport';
 import { Strategy, ExtractJwt } from 'passport-jwt';
 import jwt from 'jsonwebtoken';
 
+import User from '../models/user';
+
 const opts = {
   jwtFromRequest: ExtractJwt.fromAuthHeader(),
   secretOrKey: 'secret',
@@ -19,10 +21,18 @@ passport.use(new Strategy(opts, (payload, done) => {
 
 class AuthController {
   authenticate(req, res) {
-    const user = { _id: '111', username: req.body.username, password: req.body.password };
-    console.log(req.body.username);
-    const token = jwt.sign(user, opts.secretOrKey, { expiresIn: 10080 });
-    return res.json({ success: true, token: 'JWT ' + token });
+    User.findOne({ name: req.body.username }, (err, user) => {
+      if (!err && user) {
+        if (user.authenticate(req.body.password)) {
+          const token = jwt.sign(user, opts.secretOrKey, { expiresIn: 10080 });
+          return res.json({ success: true, token: 'JWT ' + token });
+        }
+        res.status(401);
+        return res.json({ success: false, message: 'Wrong password.' });
+      }
+      res.status(401);
+      return res.json({ success: false, message: 'User not found.' });
+    });
   }
 }
 

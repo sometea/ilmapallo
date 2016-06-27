@@ -16,7 +16,8 @@ import { LoginService } from './login.service';
       <input type="text" ngControl="username" /> <br/>
       <label for="password">Password:</label>
       <input type="text" ngControl="password" /> <br/>
-      <button type="submit" class="btn btn-primary">Login</button>
+      <button type="submit" class="btn btn-primary">Login</button> <br/>
+      <div *ngIf="!!errorMessage">{{ errorMessage }}</div>
     </form>
   `,
 })
@@ -29,12 +30,17 @@ export class LoginComponent {
       username: ['', Validators.required],
       password: ['', Validators.required],
     });
+
+    this.errorMessage = '';
   }
 
   login() {
     this.loginService.login(this.form.value.username, this.form.value.password)
         .then(response => {
           this.router.navigate(['Articles']);
+        })
+        .catch((error) => {
+          this.errorMessage = 'Login failed!';
         });
   }
 }
