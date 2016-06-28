@@ -5,7 +5,7 @@
      {{ article.title }}
      <button type="button" class="btn" [class.btn-success]="article === selectedArticle"
 	     [class.btn-primary]="article !== selectedArticle" (click)="onShow(article)">Show</button>
-     <button type="button" class="btn btn-primary" (click)="onSelect(article)">Edit</button>
+     <button *ngIf="loginService.isLoggedIn()" type="button" class="btn btn-primary" (click)="onSelect(article)">Edit</button>
    </li>
  </ul>
  <article-edit [article]="selectedArticle" (onRefresh)="onRefresh()"></article-edit>

@@ -5,6 +5,7 @@ import { Router } from '@angular/router-deprecated';
 
 import { ArticlesService } from './articles.service';
 import { ArticleEditComponent } from './article-edit.component';
+import { LoginService } from './login.service';
 
 import template from './articles.template.html';
 
@@ -14,8 +15,9 @@ import template from './articles.template.html';
   template,
 })
 export class ArticlesComponent {
-  constructor(articlesService: ArticlesService, router: Router) {
+  constructor(articlesService: ArticlesService, loginService: LoginService, router: Router) {
     this.articlesService = articlesService;
+    this.loginService = loginService;
     this.router = router;
   }
 
