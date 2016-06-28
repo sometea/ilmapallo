@@ -12,11 +12,12 @@ const opts = {
 };
 
 passport.use(new Strategy(opts, (payload, done) => {
-  // mock user data for now
-  if (payload.username === 'user') {
-    return done(null, { username: payload.username, _id: 0 });
-  }
-  return done(null, false);
+  // console.log(JSON.stringify(payload._doc));
+  User.findById(payload._doc._id, (err, user) => {
+    if (err) return done(err, false);
+    if (user) return done(null, user);
+    return done(null, false);
+  });
 }));
 
 class AuthController {
