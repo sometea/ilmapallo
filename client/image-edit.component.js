@@ -4,6 +4,7 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { FILE_UPLOAD_DIRECTIVES, FileUploader } from 'ng2-file-upload';
 
 import { ImagesService } from './images.service';
+import { LoginService } from './login.service';
 import template from './image-edit.template.html';
 
 @Component({
@@ -15,10 +16,18 @@ export class ImageEditComponent {
   @Input() image;
   @Output() onRefresh = new EventEmitter;
 
-  uploader = new FileUploader({ url: '/api/images/upload' });
+  // uploader = new FileUploader({ url: '/api/images/upload' });
 
-  constructor(imagesService: ImagesService) {
+  constructor(imagesService: ImagesService, loginService: LoginService) {
     this.imagesService = imagesService;
+    this.loginService = loginService;
+  }
+
+  ngOnInit() {
+    this.uploader = new FileUploader({ url: '/api/images/upload', authToken: this.loginService.getToken() });
+    this.uploader.onCompleteItem = (item, res, status, headers) => {
+      console.log(JSON.stringify(res));
+    };
   }
 
   save() {
