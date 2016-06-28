@@ -7,8 +7,10 @@ import methodOverride from 'method-override';
 import bodyParser from 'body-parser';
 import mongoose from 'mongoose';
 import passport from 'passport';
+import multer from 'multer';
 
 import ArticleRouter from './routes/article.js';
+import ImageRouter from './routes/image.js';
 import AuthRouter from './routes/auth.js';
 
 let app = express();
@@ -31,6 +33,7 @@ app.set('port', process.env.PORT || 3000);
 app.use(logger('dev')); // Log requests to the console
 app.use(bodyParser.json()); // Parse JSON data and put it into an object which we can access
 app.use(methodOverride()); // Allow PUT/DELETE
+// app.use(multer({ dest: 'public/uploads/' }));
 
 app.get('/', (req, res) => {
   res.render('index'); // Compiles the file named "index" in the views directory (`/views`) using the view engine (Jade).
@@ -38,6 +41,7 @@ app.get('/', (req, res) => {
 
 app.use('/api/articles', ArticleRouter);
 app.use('/api/auth', AuthRouter);
+app.use('/api/images', ImageRouter);
 
 // Redirect all other (html5)-urls to angular 2:
 app.get('/*', (req, res) => {

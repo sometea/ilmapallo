@@ -15,7 +15,7 @@ export class ImageEditComponent {
   @Input() image;
   @Output() onRefresh = new EventEmitter;
 
-  uploader = new FileUploader({ url: '/api/upload' });
+  uploader = new FileUploader({ url: '/api/images/upload' });
 
   constructor(imagesService: ImagesService) {
     this.imagesService = imagesService;
