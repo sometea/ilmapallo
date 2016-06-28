@@ -5,6 +5,8 @@ import { RouteConfig, ROUTER_DIRECTIVES, ROUTER_PROVIDERS } from '@angular/route
 
 import { ArticlesComponent } from './articles.component';
 import { ArticleDetailComponent } from './article-detail.component';
+import { ImagesComponent } from './images.component';
+import { ImagesService } from './images.service';
 import { LoginComponent } from './login.component';
 import { ArticlesService } from './articles.service';
 import { LoginService } from './login.service';
@@ -12,10 +14,11 @@ import { LoginService } from './login.service';
 @Component({
   selector: 'my-app',
   directives: [ROUTER_DIRECTIVES],
-  providers: [ArticlesService, LoginService, ROUTER_PROVIDERS],
+  providers: [ArticlesService, ImagesService, LoginService, ROUTER_PROVIDERS],
   template: `
     <h1>{{ title }}</h1>
     <a [routerLink]="['Articles']">Articles</a>
+    <a [routerLink]="['Images']">Images</a>
     <a [routerLink]="['Login']" *ngIf="!loginService.isLoggedIn()">Log in</a>
     <a [routerLink]="['Logout']" (click)="logout()" *ngIf="loginService.isLoggedIn()">Log out</a>
     <span *ngIf="loginService.isLoggedIn()">Logged in as {{ loginService.getUser().username }}!</span>
@@ -34,6 +37,11 @@ import { LoginService } from './login.service';
     path: '/article/:id',
     name: 'Article',
     component: ArticleDetailComponent,
+  },
+  {
+    path: '/images',
+    name: 'Images',
+    component: ImagesComponent,
   },
   {
     path: '/login',

@@ -1,0 +1,9 @@
+<h2>Images</h2>
+ <button type="button" class="btn btn-primary" (click)="onNew()">New Image</button>
+ <ul class="images">
+   <li *ngFor="let image of images">
+     {{ image.title }}
+     <button *ngIf="loginService.isLoggedIn()" type="button" class="btn btn-primary" (click)="onSelect(image)">Edit</button>
+   </li>
+ </ul>
+ <image-edit [image]="selectedImage" (onRefresh)="onRefresh()"></image-edit>

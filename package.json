@@ -41,6 +41,7 @@
     "method-override": "latest",
     "mongoose": "latest",
     "morgan": "latest",
+    "ng2-file-upload": "^1.0.3",
     "passport": "^0.3.2",
     "passport-jwt": "^2.0.0",
     "pug": "latest",

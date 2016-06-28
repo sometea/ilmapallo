@@ -1,0 +1,13 @@
+<div *ngIf="image">
+  <input type="text" [(ngModel)]="image.title" /> <br/>
+  <input type="file" ng2FileSelect [uploader]="uploader" />
+  <button type="button" class="btn btn-success" (click)="uploader.uploadAll()">Upload</button> <br/>
+  <button type="button" class="btn btn-primary" (click)="save()">Save</button>
+  <button type="button" class="btn btn-warning" (click)="remove()">Remove</button>
+  <div *ngIf="error">
+    {{ error }}
+  </div>
+  <div *ngIf="statusMessage">
+    {{ statusMessage }}
+  </div>
+</div>

@@ -1,4 +1,4 @@
-// root component of the application
+// articles component
 
 import { Component } from '@angular/core';
 import { Router } from '@angular/router-deprecated';
