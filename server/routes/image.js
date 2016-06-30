@@ -12,5 +12,10 @@ const dest = 'public/uploads';
 const upload = multer({ dest });
 
 router.post('/upload', isAuthenticated, upload.single('file'), ImageController.upload);
+router.get('/', ImageController.getImages);
+router.get('/:id', ImageController.getImage);
+router.post('/', isAuthenticated, ImageController.postImage);
+router.put('/:id', isAuthenticated, ImageController.updateImage);
+router.delete('/:id', isAuthenticated, ImageController.deleteImage);
 
 export default router;

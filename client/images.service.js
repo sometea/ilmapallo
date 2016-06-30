@@ -16,17 +16,17 @@ export class ImagesService {
   }
 
   getImages() {
-    return Promise.resolve([{ title: 'Testbild', filename: 'testbild.png' }]);
-    // return this.http.get(this.imagesUrl).toPromise()
-    //            .then(response => response.json())
-    //            .catch(this.handleError);
+    // return Promise.resolve([{ title: 'Testbild', filename: 'testbild.png' }]);
+    return this.http.get(this.imagesUrl).toPromise()
+               .then(response => response.json())
+               .catch(this.handleError);
   }
 
   getImage(id) {
-    return Promise.resolve({ title: 'Testbild', filename: 'testbild.png' });
-    // return this.http.get(this.imagesUrl + id).toPromise()
-    //            .then(response => response.json())
-    //            .catch(this.handleError);
+    // return Promise.resolve({ title: 'Testbild', filename: 'testbild.png' });
+    return this.http.get(this.imagesUrl + id).toPromise()
+               .then(response => response.json())
+               .catch(this.handleError);
   }
 
   deleteImage(id) {

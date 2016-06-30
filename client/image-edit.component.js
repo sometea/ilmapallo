@@ -16,8 +16,6 @@ export class ImageEditComponent {
   @Input() image;
   @Output() onRefresh = new EventEmitter;
 
-  // uploader = new FileUploader({ url: '/api/images/upload' });
-
   constructor(imagesService: ImagesService, loginService: LoginService) {
     this.imagesService = imagesService;
     this.loginService = loginService;
@@ -26,7 +24,9 @@ export class ImageEditComponent {
   ngOnInit() {
     this.uploader = new FileUploader({ url: '/api/images/upload', authToken: this.loginService.getToken() });
     this.uploader.onCompleteItem = (item, res, status, headers) => {
-      console.log(JSON.stringify(res));
+      // save the uploaded image filename in the current image object
+      this.image.filename = JSON.parse(res).filename;
+      this.statusMessage = 'Upload completed successfully.';
     };
   }
 
