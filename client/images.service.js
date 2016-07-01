@@ -2,7 +2,7 @@
 
 import { Injectable } from '@angular/core';
 import { Headers, Http } from '@angular/http';
-import 'rxjs/add/operator/toPromise';
+import 'rxjs/add/operator/catch';
 
 import { LoginService } from './login.service';
 
@@ -16,24 +16,22 @@ export class ImagesService {
   }
 
   getImages() {
-    // return Promise.resolve([{ title: 'Testbild', filename: 'testbild.png' }]);
-    return this.http.get(this.imagesUrl).toPromise()
-               .then(response => response.json())
-               .catch(this.handleError);
+    return this.http.get(this.imagesUrl)
+               .map(response => response.json())
+               .catch(err => this.handleError(err));
   }
 
   getImage(id) {
-    // return Promise.resolve({ title: 'Testbild', filename: 'testbild.png' });
     return this.http.get(this.imagesUrl + id).toPromise()
-               .then(response => response.json())
-               .catch(this.handleError);
+               .map(response => response.json())
+               .catch(err => this.handleError(err));
   }
 
   deleteImage(id) {
     const headers = new Headers({ 'Authorization': this.loginService.getToken() });
-    return this.http.delete(this.imagesUrl + id, { headers }).toPromise()
-               .then(response => response.json())
-               .catch(this.handleError);
+    return this.http.delete(this.imagesUrl + id, { headers })
+               .map(response => response.json())
+               .catch(err => this.handleError(err));
   }
 
   saveImage(image) {
@@ -45,12 +43,10 @@ export class ImagesService {
     if (image._id) {
       url = url + image._id;
       return this.http.put(url, JSON.stringify(image), { headers })
-        .toPromise().then(() => image)
-        .catch(this.handleError);
+                      .catch(this.handleError);
     }
     return this.http.post(url, JSON.stringify(image), { headers })
-      .toPromise().then(() => image)
-      .catch(this.handleError);
+                    .catch(this.handleError);
   }
 
   handleError(error) {

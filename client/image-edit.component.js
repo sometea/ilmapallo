@@ -31,19 +31,19 @@ export class ImageEditComponent {
   }
 
   save() {
-    this.imagesService.saveImage(this.image).then(image => {
+    this.imagesService.saveImage(this.image).subscribe(image => {
       this.image = image;
       this.statusMessage = 'Saved image.';
       this.onRefresh.emit();
-    }).catch(error => { this.error = error; });
+    }, error => { this.error = error; });
   }
 
   remove() {
     if (this.image._id) {
-      this.imagesService.deleteImage(this.image._id).then(images => {
+      this.imagesService.deleteImage(this.image._id).subscribe(images => {
         this.image = null;
         this.onRefresh.emit();
-      }).catch(error => { this.error = error; });
+      }, error => { this.error = error; });
     } else {
       this.image = null;
       this.onRefresh.emit();

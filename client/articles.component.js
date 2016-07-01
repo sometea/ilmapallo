@@ -22,7 +22,7 @@ export class ArticlesComponent {
   }
 
   fetchArticles() {
-    this.articlesService.getArticles().then(articles => { this.articles = articles; });
+    this.articlesService.getArticles().subscribe(articles => { this.articles = articles; });
   }
 
   ngOnInit() {

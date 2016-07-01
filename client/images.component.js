@@ -20,7 +20,7 @@ export class ImagesComponent {
   }
 
   fetchImages() {
-    this.imagesService.getImages().then(images => { this.images = images; });
+    this.imagesService.getImages().subscribe(images => { this.images = images; });
   }
 
   ngOnInit() {

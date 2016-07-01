@@ -2,7 +2,7 @@
 
 import { Injectable } from '@angular/core';
 import { Headers, Http } from '@angular/http';
-import 'rxjs/add/operator/toPromise';
+import 'rxjs/add/operator/catch';
 
 import { LoginService } from './login.service';
 
@@ -16,22 +16,22 @@ export class ArticlesService {
   }
 
   getArticles() {
-    return this.http.get(this.articlesUrl).toPromise()
-               .then(response => response.json())
-               .catch(this.handleError);
+    return this.http.get(this.articlesUrl)
+               .catch(err => this.handleError(err))
+               .map(response => response.json());
   }
 
   getArticle(id) {
-    return this.http.get(this.articlesUrl + id).toPromise()
-               .then(response => response.json())
-               .catch(this.handleError);
+    return this.http.get(this.articlesUrl + id)
+               .catch(err => this.handleError(err))
+               .map(response => response.json());
   }
 
   deleteArticle(id) {
     const headers = new Headers({ 'Authorization': this.loginService.getToken() });
-    return this.http.delete(this.articlesUrl + id, { headers }).toPromise()
-               .then(response => response.json())
-               .catch(this.handleError);
+    return this.http.delete(this.articlesUrl + id, { headers })
+               .map(response => response.json())
+               .catch(err => this.handleError(err));
   }
 
   saveArticle(article) {
@@ -43,12 +43,10 @@ export class ArticlesService {
     if (article._id) {
       url = url + article._id;
       return this.http.put(url, JSON.stringify(article), { headers })
-        .toPromise().then(() => article)
-        .catch(this.handleError);
+                      .catch(this.handleError);
     }
     return this.http.post(url, JSON.stringify(article), { headers })
-      .toPromise().then(() => article)
-      .catch(this.handleError);
+                    .catch(this.handleError);
   }
 
   handleError(error) {

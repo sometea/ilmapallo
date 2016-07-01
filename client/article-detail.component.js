@@ -27,7 +27,5 @@ export class ArticleDetailComponent {
         .map(params => params.id)
         .flatMap(id => this.articlesService.getArticle(id))
         .subscribe(article => { this.article = article; });
-    // const id = this.routeParams.get('id');
-    // this.articlesService.getArticle(id).then(article => { this.article = article; });
   }
 }
