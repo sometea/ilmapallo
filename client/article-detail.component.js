@@ -1,7 +1,7 @@
 // article detail component
 
 import { Component, Input } from '@angular/core';
-import { RouteParams } from '@angular/router-deprecated';
+import { ActivatedRoute } from '@angular/router';
 
 import { ArticlesService } from './articles.service';
 
@@ -17,13 +17,17 @@ import { ArticlesService } from './articles.service';
     `,
 })
 export class ArticleDetailComponent {
-  constructor(articlesService: ArticlesService, routeParams: RouteParams) {
+  constructor(articlesService: ArticlesService, route: ActivatedRoute) {
     this.articlesService = articlesService;
-    this.routeParams = routeParams;
+    this.route = route;
   }
 
   ngOnInit() {
-    const id = this.routeParams.get('id');
-    this.articlesService.getArticle(id).then(article => { this.article = article; });
+    this.route.params
+        .map(params => params.id)
+        .flatMap(id => this.articlesService.getArticle(id))
+        .subscribe(article => { this.article = article; });
+    // const id = this.routeParams.get('id');
+    // this.articlesService.getArticle(id).then(article => { this.article = article; });
   }
 }

@@ -1,7 +1,6 @@
 // images component
 
 import { Component } from '@angular/core';
-import { Router } from '@angular/router-deprecated';
 
 import { ImagesService } from './images.service';
 import { ImageEditComponent } from './image-edit.component';
@@ -15,10 +14,9 @@ import template from './images.template.html';
   template,
 })
 export class ImagesComponent {
-  constructor(imagesService: ImagesService, loginService: LoginService, router: Router) {
+  constructor(imagesService: ImagesService, loginService: LoginService) {
     this.imagesService = imagesService;
     this.loginService = loginService;
-    this.router = router;
   }
 
   fetchImages() {

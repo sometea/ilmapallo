@@ -1,7 +1,7 @@
 // the main application component
 
 import { Component } from '@angular/core';
-import { RouteConfig, ROUTER_DIRECTIVES, ROUTER_PROVIDERS } from '@angular/router-deprecated';
+import { ROUTER_DIRECTIVES } from '@angular/router';
 
 import { ArticlesComponent } from './articles.component';
 import { ArticleDetailComponent } from './article-detail.component';
@@ -14,46 +14,18 @@ import { LoginService } from './login.service';
 @Component({
   selector: 'my-app',
   directives: [ROUTER_DIRECTIVES],
-  providers: [ArticlesService, ImagesService, LoginService, ROUTER_PROVIDERS],
+  providers: [ArticlesService, ImagesService, LoginService],
   template: `
     <h1>{{ title }}</h1>
-    <a [routerLink]="['Articles']">Articles</a>
-    <a [routerLink]="['Images']">Images</a>
-    <a [routerLink]="['Login']" *ngIf="!loginService.isLoggedIn()">Log in</a>
-    <a [routerLink]="['Logout']" (click)="logout()" *ngIf="loginService.isLoggedIn()">Log out</a>
+    <a [routerLink]="['articles']">Articles</a>
+    <a [routerLink]="['images']">Images</a>
+    <a [routerLink]="['login']" *ngIf="!loginService.isLoggedIn()">Log in</a>
+    <a [routerLink]="['logout']" (click)="logout()" *ngIf="loginService.isLoggedIn()">Log out</a>
     <span *ngIf="loginService.isLoggedIn()">Logged in as {{ loginService.getUser().username }}!</span>
     <span *ngIf="!loginService.isLoggedIn()">Not logged in.</span>
     <router-outlet></router-outlet>
     `,
 })
-@RouteConfig([
-  {
-    path: '/articles',
-    name: 'Articles',
-    component: ArticlesComponent,
-    useAsDefault: true,
-  },
-  {
-    path: '/article/:id',
-    name: 'Article',
-    component: ArticleDetailComponent,
-  },
-  {
-    path: '/images',
-    name: 'Images',
-    component: ImagesComponent,
-  },
-  {
-    path: '/login',
-    name: 'Login',
-    component: LoginComponent,
-  },
-  {
-    path: '/logout',
-    name: 'Logout',
-    component: ArticlesComponent,
-  },
-])
 export class AppComponent {
   title = 'Ilmapallo 2';
 

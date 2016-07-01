@@ -1,7 +1,7 @@
 // articles component
 
 import { Component } from '@angular/core';
-import { Router } from '@angular/router-deprecated';
+import { Router } from '@angular/router';
 
 import { ArticlesService } from './articles.service';
 import { ArticleEditComponent } from './article-edit.component';
@@ -34,7 +34,7 @@ export class ArticlesComponent {
   }
 
   onShow(article) {
-    this.router.navigate(['Article', { id: article._id }]);
+    this.router.navigate(['article', article._id]);
   }
 
   onNew() {

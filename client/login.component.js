@@ -2,7 +2,7 @@
 
 import { Component, Input } from '@angular/core';
 import { FORM_DIRECTIVES, ControlGroup, FormBuilder, Validators } from '@angular/common';
-import { RouteParams, Router } from '@angular/router-deprecated';
+import { Router } from '@angular/router';
 
 import { LoginService } from './login.service';
 
@@ -37,7 +37,7 @@ export class LoginComponent {
   login() {
     this.loginService.login(this.form.value.username, this.form.value.password)
         .then(response => {
-          this.router.navigate(['Articles']);
+          this.router.navigate(['articles']);
         })
         .catch((error) => {
           this.errorMessage = 'Login failed!';
