@@ -1,6 +1,6 @@
 <div *ngIf="image">
   <input type="text" [(ngModel)]="image.title" /> <br/>
-  <div>{{ image.filename }}</div>
+  Current filename: <div>{{ image.filename }}</div>
   <input type="file" ng2FileSelect [uploader]="uploader" />
   <button type="button" class="btn btn-success" (click)="uploader.uploadAll()">Upload</button> <br/>
   <button type="button" class="btn btn-primary" *ngIf="!!image.filename" (click)="save()">Save</button>

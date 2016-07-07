@@ -15,7 +15,7 @@ imageSchema.methods.getUrl = function getUrl() {
 imageSchema.methods.deleteOldFile = function deleteOldFile(oldFilename) {
   // delete the old file if different from the new one
   if (oldFilename !== this.filename) {
-    fs.unlink('uploads/' + oldFilename, (err) => {
+    fs.unlink('public/uploads/' + oldFilename, (err) => {
       if (err) console.log('Removing old image file failed.');
     });
   }
@@ -23,7 +23,7 @@ imageSchema.methods.deleteOldFile = function deleteOldFile(oldFilename) {
 
 imageSchema.methods.deleteFile = function deleteFile() {
   // convenience function to delete the file associated with this image, no questions asked
-  fs.unlink('uploads/' + this.filename, (err) => {
+  fs.unlink('public/uploads/' + this.filename, (err) => {
     if (err) console.log('Removing image file failed.');
   });
 };
