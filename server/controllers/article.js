@@ -1,6 +1,14 @@
 // server side article controller
 
+import sanitize from 'sanitize-html';
+
 import Article from '../models/article';
+
+function processText(text) {
+  return sanitize(text, {
+    allowedTags: ['b', 'em', 'strong', 'img', 'a', 'p', 'br'],
+  });
+}
 
 class ArticleController {
   getArticles(req, res) {
@@ -18,9 +26,10 @@ class ArticleController {
   }
 
   postArticle(req, res) {
+    const newText = processText(req.body.text);
     Article.create({
       title: req.body.title,
-      text: req.body.text,
+      text: newText,
     }, (err, article) => {
       if (err) return res.send(err);
       return res.json(article);  // send back newly created article
@@ -38,8 +47,9 @@ class ArticleController {
   }
 
   updateArticle(req, res) {
+    const newText = processText(req.body.text);
     Article.findOneAndUpdate({ _id: req.body._id },
-                             { title: req.body.title, text: req.body.text },
+                             { title: req.body.title, text: newText },
                              (err, article) => {
                                if (err) return res.send(err);
                                return res.json(article);

@@ -1,5 +1,5 @@
 <h2>Articles</h2>
- <button type="button" class="btn btn-primary" (click)="onNew()">New Article</button>
+ <button *ngIf="loginService.isLoggedIn()" type="button" class="btn btn-primary" (click)="onNew()">New Article</button>
  <ul class="articles">
    <li *ngFor="let article of articles">
      {{ article.title }}

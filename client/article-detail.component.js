@@ -10,8 +10,7 @@ import { ArticlesService } from './articles.service';
   template: `
   <div *ngIf="article">
     <h2>{{ article.title }}</h2>
-    <div>
-     {{ article.text }}
+    <div [innerHtml]="article.text">
     </div>
   </div>
     `,
