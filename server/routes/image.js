@@ -2,6 +2,8 @@
 
 import express from 'express';
 import multer from 'multer';
+import path from 'path';
+import crypto from 'crypto';
 
 import ImageController from '../controllers/image';
 import { isAuthenticated } from '../controllers/auth';
@@ -9,7 +11,17 @@ import { isAuthenticated } from '../controllers/auth';
 const router = new express.Router();
 
 const dest = 'public/uploads';
-const upload = multer({ dest });
+const upload = multer({ storage: multer.diskStorage({
+  destination: (req, file, cb) => {
+    cb(null, dest);
+  },
+  filename: (req, file, cb) => {
+    crypto.randomBytes(24, (err, buffer) => {
+      const randomString = buffer.toString('hex');
+      cb(null, randomString + path.extname(file.originalname));
+    });
+  },
+}) });
 
 router.post('/upload', isAuthenticated, upload.single('file'), ImageController.upload);
 router.get('/', ImageController.getImages);

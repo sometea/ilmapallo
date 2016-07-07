@@ -33,7 +33,6 @@ app.set('port', process.env.PORT || 3000);
 app.use(logger('dev')); // Log requests to the console
 app.use(bodyParser.json()); // Parse JSON data and put it into an object which we can access
 app.use(methodOverride()); // Allow PUT/DELETE
-// app.use(multer({ dest: 'public/uploads/' }));
 
 app.get('/', (req, res) => {
   res.render('index'); // Compiles the file named "index" in the views directory (`/views`) using the view engine (Jade).
