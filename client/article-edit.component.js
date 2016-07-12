@@ -19,7 +19,6 @@ export class ArticleEditComponent {
 
   save() {
     this.articlesService.saveArticle(this.article).subscribe(article => {
-      this.article = article;
       this.statusMessage = 'Saved article.';
       this.onRefresh.emit();
     }, error => { this.error = error; });

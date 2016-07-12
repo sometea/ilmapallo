@@ -10,4 +10,6 @@ require('!!script!zone.js/dist/long-stack-trace-zone.min.js');
 
 require('bootstrap/dist/css/bootstrap.min.css');
 
+require('./css/styles.css');
+
 require('./main');

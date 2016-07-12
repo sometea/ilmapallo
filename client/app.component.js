@@ -11,20 +11,13 @@ import { LoginComponent } from './login.component';
 import { ArticlesService } from './articles.service';
 import { LoginService } from './login.service';
 
+import template from './app.template.html';
+
 @Component({
   selector: 'my-app',
   directives: [ROUTER_DIRECTIVES],
   providers: [ArticlesService, ImagesService, LoginService],
-  template: `
-    <h1>{{ title }}</h1>
-    <a [routerLink]="['articles']">Articles</a>
-    <a [routerLink]="['images']">Images</a>
-    <a [routerLink]="['login']" *ngIf="!loginService.isLoggedIn()">Log in</a>
-    <a [routerLink]="['logout']" (click)="logout()" *ngIf="loginService.isLoggedIn()">Log out</a>
-    <span *ngIf="loginService.isLoggedIn()">Logged in as {{ loginService.getUser().username }}!</span>
-    <span *ngIf="!loginService.isLoggedIn()">Not logged in.</span>
-    <router-outlet></router-outlet>
-    `,
+  template,
 })
 export class AppComponent {
   title = 'Ilmapallo 2';
