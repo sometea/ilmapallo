@@ -2,11 +2,14 @@ import path from 'path'; // Join paths with the right type of slash
 
 require('es6-promise').polyfill();
 
-let config = {
-  entry: path.join(__dirname, 'client', 'index.js'),
+const config = {
+  entry: {
+    'bundle': path.join(__dirname, 'client', 'index.js'),
+    'tests': path.join(__dirname, 'client', 'tests.js'),
+  },
   output: {
     path: path.join(__dirname, 'public'),
-    filename: 'bundle.js'
+    filename: '[name].js',
   },
   module: {
     loaders: [
