@@ -9,6 +9,7 @@
     "babel:w": "babel -w server --out-dir lib",
     "webpack": "webpack",
     "webpack:w": "webpack --watch",
+    "karma": "karma start",
     "start": "node lib/server",
     "prestart": "npm run babel && npm run webpack"
   },
@@ -61,6 +62,9 @@
     "eslint-plugin-import": "^1.8.1",
     "eslint-plugin-jsx-a11y": "^1.5.3",
     "eslint-plugin-react": "^5.2.1",
-    "jasmine-core": "2.4.1"
+    "jasmine-core": "2.4.1",
+    "karma": "^1.1.2",
+    "karma-chrome-launcher": "^1.0.1",
+    "karma-jasmine": "^1.0.2"
   }
 }
