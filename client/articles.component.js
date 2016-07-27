@@ -1,7 +1,7 @@
 // articles component
 
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
+import { ROUTER_DIRECTIVES } from '@angular/router';
 
 import { ArticlesService } from './articles.service';
 import { ArticleEditComponent } from './article-edit.component';
@@ -10,15 +10,14 @@ import { LoginService } from './login.service';
 import template from './articles.template.html';
 
 @Component({
-  directives: [ArticleEditComponent],
+  directives: [ArticleEditComponent, ROUTER_DIRECTIVES],
   selector: 'articles',
   template,
 })
 export class ArticlesComponent {
-  constructor(articlesService: ArticlesService, loginService: LoginService, router: Router) {
+  constructor(articlesService: ArticlesService, loginService: LoginService) {
     this.articlesService = articlesService;
     this.loginService = loginService;
-    this.router = router;
   }
 
   fetchArticles() {
@@ -31,10 +30,6 @@ export class ArticlesComponent {
 
   onSelect(article) {
     this.selectedArticle = article;
-  }
-
-  onShow(article) {
-    this.router.navigate(['article', article._id]);
   }
 
   onNew() {

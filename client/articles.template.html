@@ -9,7 +9,7 @@
 <table class="table table-bordered table-striped" style="table-layout: auto">
   <tbody>
     <tr *ngFor="let article of articles">
-      <td><a (click)="onShow(article)">{{ article.title }}</a></td>
+      <td><a [routerLink]="['/article', article._id]" >{{ article.title }}</a></td>
       <td>
 	<button *ngIf="loginService.isLoggedIn()" type="button" class="btn"
 		[class.btn-primary]="article !== selectedArticle" [class.btn-success]="article === selectedArticle" (click)="onSelect(article)">Edit</button>
