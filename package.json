@@ -13,8 +13,8 @@
     "start": "node lib/server",
     "prestart": "npm run babel && npm run webpack"
   },
-  "author": "",
-  "license": "ISC",
+  "author": "David Dasenbrook",
+  "license": "GNU GPL v3",
   "dependencies": {
     "@angular/common": "latest",
     "@angular/compiler": "latest",
