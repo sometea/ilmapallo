@@ -1,13 +1,19 @@
 <div *ngIf="article">
-  <input type="text" [(ngModel)]="article.title" /> <br/>
-  <textarea [(ngModel)]="article.text">
-  </textarea><br/>
-  <button type="button" class="btn btn-primary" (click)="save()">Save</button>
-  <button type="button" class="btn btn-warning" (click)="remove()">Remove</button>
-  <div *ngIf="error">
-    {{ error }}
-  </div>
-  <div *ngIf="statusMessage">
-    {{ statusMessage }}
+  <p>
+    <input type="text" [(ngModel)]="article.title" />
+  </p>
+  <p>
+    <textarea rows="10" cols="80" [(ngModel)]="article.text">
+    </textarea>
+  </p>
+  <div>
+    <button type="button" class="btn btn-primary" (click)="save()">Save</button>
+    <button type="button" class="btn btn-warning" (click)="remove()">Remove</button>
+    <div *ngIf="error">
+      {{ error }}
+    </div>
+    <div *ngIf="statusMessage">
+      {{ statusMessage }}
+    </div>
   </div>
 </div>
