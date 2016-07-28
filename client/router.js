@@ -9,7 +9,7 @@ import { LoginComponent } from './login.component';
 import { HomeComponent } from './home.component';
 
 export const appRoutes: RouterConfig = [
-  { path: '', redirectTo: 'articles', terminal: true },
+  { path: '', redirectTo: 'home', terminal: true },
   { path: 'articles', component: ArticlesComponent },
   { path: 'article/:id', component: ArticleDetailComponent },
   { path: 'images', component: ImagesComponent },

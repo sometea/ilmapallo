@@ -16,7 +16,7 @@ const upload = multer({ storage: multer.diskStorage({
     cb(null, dest);
   },
   filename: (req, file, cb) => {
-    crypto.randomBytes(24, (err, buffer) => {
+    crypto.randomBytes(16, (err, buffer) => {
       const randomString = buffer.toString('hex');
       cb(null, randomString + path.extname(file.originalname));
     });

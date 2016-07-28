@@ -1,20 +1,22 @@
 <h2>Images</h2>
-<div>
+<p>
   <button *ngIf="loginService.isLoggedIn()" type="button" class="btn btn-primary"
 	  (click)="onNew()">New Image</button>
-</div>
-<div>
+</p>
+<p>
   <image-edit [image]="selectedImage" (onRefresh)="onRefresh()"></image-edit>
-</div>
- <table class="table table-bordered table-striped" style="table-layout: auto">
-   <tbody>
-   <tr *ngFor="let image of images">
-     <td>{{ image.title }}</td>
-     <td>
-       <button *ngIf="loginService.isLoggedIn()" type="button" class="btn"
-       [class.btn-primary]="image !== selectedImage" [class.btn-success]="image ===
-       selectedImage" (click)="onSelect(image)">Edit</button>
-     </td>
-   </tr>
-   </tbody>
- </table>
+</p>
+<table class="table table-bordered table-striped" style="table-layout: auto">
+  <tbody>
+    <tr *ngFor="let image of images">
+      <td>{{ image.title }}</td>
+      <td>
+	<button *ngIf="loginService.isLoggedIn()" type="button" class="btn"
+		[class.btn-primary]="image !== selectedImage"
+		[class.btn-success]="image === selectedImage"
+		(click)="onSelect(image)">Edit</button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
