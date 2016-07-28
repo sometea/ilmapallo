@@ -1,0 +1,7 @@
+<h2>Welcome to your new site!</h2>
+<div>
+  <div *ngFor="let article of articles">
+    <h3>{{ article.title }}</h3>
+    <p [innerHtml]="article.text"></p>
+  </div>
+</div>

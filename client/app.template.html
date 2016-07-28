@@ -1,8 +1,14 @@
 <h1>{{ title }}</h1>
-<a [routerLink]="['articles']">Articles</a>
-<a [routerLink]="['images']">Images</a>
-<a [routerLink]="['login']" *ngIf="!loginService.isLoggedIn()">Log in</a>
-<a [routerLink]="['logout']" (click)="logout()" *ngIf="loginService.isLoggedIn()">Log out</a>
-<span *ngIf="loginService.isLoggedIn()">Logged in as {{ loginService.getUser().username }}!</span>
-<span *ngIf="!loginService.isLoggedIn()">Not logged in.</span>
+<p>
+  <a [routerLink]="['home']">Home</a>
+</p>
+<p>
+  Admin:
+  <a [routerLink]="['articles']">Articles</a>
+  <a [routerLink]="['images']">Images</a>
+  <a [routerLink]="['login']" *ngIf="!loginService.isLoggedIn()">Log in</a>
+  <a [routerLink]="['logout']" (click)="logout()" *ngIf="loginService.isLoggedIn()">Log out</a>
+  <span *ngIf="loginService.isLoggedIn()">Logged in as {{ loginService.getUser().username }}!</span>
+  <span *ngIf="!loginService.isLoggedIn()">Not logged in.</span>
+</p>
 <router-outlet></router-outlet>

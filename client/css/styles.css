@@ -1,2 +1,6 @@
 /* Custom styles for the ilmapallo admin interface */
 
+body {
+    margin: 0 auto;
+    width: 50em;
+}

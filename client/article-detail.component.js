@@ -5,15 +5,11 @@ import { ActivatedRoute } from '@angular/router';
 
 import { ArticlesService } from './articles.service';
 
+import template from './article-detail.template.html';
+
 @Component({
   selector: 'article-detail',
-  template: `
-  <div *ngIf="article">
-    <h2>{{ article.title }}</h2>
-    <div [innerHtml]="article.text">
-    </div>
-  </div>
-    `,
+  template,
 })
 export class ArticleDetailComponent {
   constructor(articlesService: ArticlesService, route: ActivatedRoute) {
