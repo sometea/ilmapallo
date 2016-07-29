@@ -1,18 +1,22 @@
 <div *ngIf="image">
-  <input type="text" [(ngModel)]="image.title" /> <br/>
-  <div>Current URL: uploads/{{ image.filename }}</div>
-  <div>
+  <p><input type="text" [(ngModel)]="image.title" /></p>
+  <p>Current URL: uploads/{{ image.filename }}</p>
+  <p>
     Preview:
     <img *ngIf="!!image.filename" width="200px" src="uploads/{{ image.filename }}" alt="{{ image.filename }}" />
-  </div>
-  <input type="file" ng2FileSelect [uploader]="uploader" />
-  <button type="button" class="btn btn-success" (click)="uploader.uploadAll()">Upload</button> <br/>
-  <button type="button" class="btn btn-primary" *ngIf="!!image.filename" (click)="save()">Save</button>
-  <button type="button" class="btn btn-warning" (click)="remove()">Remove</button>
-  <div *ngIf="error">
+  </p>
+  <p>
+    <input type="file" ng2FileSelect [uploader]="uploader" />
+  </p>
+  <p>
+    <button type="button" class="btn btn-success" (click)="uploader.uploadAll()">Upload</button>
+    <button type="button" class="btn btn-primary" *ngIf="!!image.filename" (click)="save()">Save</button>
+    <button type="button" class="btn btn-warning" (click)="remove()">Remove</button>
+  </p>
+  <p *ngIf="error">
     {{ error }}
-  </div>
-  <div *ngIf="statusMessage">
+  </p>
+  <p *ngIf="statusMessage">
     {{ statusMessage }}
-  </div>
+  </p>
 </div>
