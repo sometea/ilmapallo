@@ -20,8 +20,11 @@ import template from './app.template.html';
   template,
 })
 export class AppComponent {
+  // global configuration
+  // TO DO: move this to a separate config layer
   title = 'Ilmapallo 2';
-
+  hideMenuBar = true;  
+    
   constructor(loginService: LoginService) {
     this.loginService = loginService;
   }

@@ -2,7 +2,7 @@
 <p>
   <a [routerLink]="['home']">Home</a>
 </p>
-<p>
+<p *ngIf="!hideMenuBar || loginService.isLoggedIn()">
   Admin:
   <a [routerLink]="['articles']">Articles</a>
   <a [routerLink]="['images']">Images</a>
