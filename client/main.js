@@ -1,14 +1,13 @@
 // angular bootstrapping
 
-import { bootstrap } from '@angular/platform-browser-dynamic';
-import { HTTP_PROVIDERS } from '@angular/http';
-import { FormBuilder } from '@angular/common';
+import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 
-import { AppComponent } from './app.component';
-import { APP_ROUTER_PROVIDER } from './router';
+import { AppModule } from './app.module';
 
-const main = document.addEventListener('DOMContentLoaded', () => {
-  bootstrap(AppComponent, [HTTP_PROVIDERS, APP_ROUTER_PROVIDER, FormBuilder]);
-});
+// const main = document.addEventListener('DOMContentLoaded', () => {
+//   bootstrap(AppComponent, [HTTP_PROVIDERS, APP_ROUTER_PROVIDER, FormBuilder]);
+// });
 
-export { main };
+// export { main };
+
+platformBrowserDynamic().bootstrapModule(AppModule);
