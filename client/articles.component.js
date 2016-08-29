@@ -1,7 +1,6 @@
 // articles component
 
 import { Component } from '@angular/core';
-import { ROUTER_DIRECTIVES } from '@angular/router';
 
 import { ArticlesService } from './articles.service';
 import { ArticleEditComponent } from './article-edit.component';
@@ -10,7 +9,6 @@ import { LoginService } from './login.service';
 import template from './articles.template.html';
 
 @Component({
-  directives: [ArticleEditComponent, ROUTER_DIRECTIVES],
   selector: 'articles',
   template,
 })

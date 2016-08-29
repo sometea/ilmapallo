@@ -22,4 +22,3 @@ export const routing = RouterModule.forRoot(appRoutes);
 
 export const appRoutingProviders = [];
 
-// export const APP_ROUTER_PROVIDER = provideRouter(appRoutes);
