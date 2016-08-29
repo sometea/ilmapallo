@@ -3,9 +3,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpModule } from '@angular/http';
-// To do: migrate to the new forms module
-//import { FormsModule } from '@angular/forms';
-import { FormBuilder } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { routing, appRoutingProviders } from './router';
@@ -14,10 +12,10 @@ import { routing, appRoutingProviders } from './router';
   declarations: [AppComponent],
   imports: [BrowserModule,
             HttpModule,
+            FormsModule,
             routing,
            ],
-  providers: [appRoutingProviders,
-             FormBuilder],
+  providers: [appRoutingProviders],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
