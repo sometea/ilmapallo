@@ -9,7 +9,7 @@ import { LoginComponent } from './login.component';
 import { HomeComponent } from './home.component';
 
 const appRoutes: Routes = [
-  { path: '', redirectTo: 'home', terminal: true },
+  { path: '', redirectTo: 'home', pathMatch: 'full', terminal: true },
   { path: 'articles', component: ArticlesComponent },
   { path: 'article/:id', component: ArticleDetailComponent },
   { path: 'images', component: ImagesComponent },

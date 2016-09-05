@@ -18,9 +18,8 @@ export class ArticleDetailComponent {
   }
 
   ngOnInit() {
-    this.route.params
-        .map(params => params.id)
-        .flatMap(id => this.articlesService.getArticle(id))
-        .subscribe(article => { this.article = article; });
+    this.route.params.subscribe(params => {
+      this.articlesService.getArticle(params.id).subscribe(article => { this.article = article; });
+    });
   }
 }

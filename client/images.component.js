@@ -9,7 +9,7 @@ import { LoginService } from './login.service';
 import template from './images.template.html';
 
 @Component({
-  directives: [ImageEditComponent],
+  // directives: [ImageEditComponent],
   selector: 'images',
   template,
 })

@@ -3,6 +3,7 @@
 import { Injectable } from '@angular/core';
 import { Headers, Http } from '@angular/http';
 import 'rxjs/add/operator/catch';
+import 'rxjs/add/operator/map';
 
 import { LoginService } from './login.service';
 
@@ -17,14 +18,14 @@ export class ArticlesService {
 
   getArticles() {
     return this.http.get(this.articlesUrl)
-               .catch(err => this.handleError(err))
-               .map(response => response.json());
+      .map(response => response.json())
+      .catch(err => this.handleError(err));
   }
 
   getArticle(id) {
     return this.http.get(this.articlesUrl + id)
-               .catch(err => this.handleError(err))
-               .map(response => response.json());
+      .map(response => response.json())
+      .catch(err => this.handleError(err));
   }
 
   deleteArticle(id) {

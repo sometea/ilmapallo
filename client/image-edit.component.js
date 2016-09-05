@@ -1,7 +1,7 @@
 // image edit component
 
 import { Component, Input, Output, EventEmitter } from '@angular/core';
-import { FILE_UPLOAD_DIRECTIVES, FileUploader } from 'ng2-file-upload';
+import { FileUploader } from 'ng2-file-upload';
 
 import { ImagesService } from './images.service';
 import { LoginService } from './login.service';
@@ -9,7 +9,6 @@ import template from './image-edit.template.html';
 
 @Component({
   selector: 'image-edit',
-  directives: [FILE_UPLOAD_DIRECTIVES],
   template,
 })
 export class ImageEditComponent {
