@@ -5,10 +5,10 @@ import { Headers, Http } from '@angular/http';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/map';
 
-import { LoginService } from './login.service';
+import LoginService from './login.service';
 
 @Injectable()
-export class ArticlesService {
+export default class ArticlesService {
   articlesUrl = '/api/articles/';
 
   constructor(http: Http, loginService: LoginService) {

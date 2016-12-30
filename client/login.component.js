@@ -3,7 +3,7 @@
 import { Component, Input } from '@angular/core';
 import { Router } from '@angular/router';
 
-import { LoginService } from './login.service';
+import LoginService from './login.service';
 
 @Component({
   selector: 'login',
@@ -25,7 +25,7 @@ import { LoginService } from './login.service';
     </form>
   `,
 })
-export class LoginComponent {
+export default class LoginComponent {
   constructor(router: Router, loginService: LoginService) {
     this.router = router;
     this.loginService = loginService;

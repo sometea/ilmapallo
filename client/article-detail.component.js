@@ -3,7 +3,7 @@
 import { Component, Input } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
-import { ArticlesService } from './articles.service';
+import ArticlesService from './articles.service';
 
 import template from './article-detail.template.html';
 
@@ -11,7 +11,7 @@ import template from './article-detail.template.html';
   selector: 'article-detail',
   template,
 })
-export class ArticleDetailComponent {
+export default class ArticleDetailComponent {
   constructor(articlesService: ArticlesService, route: ActivatedRoute) {
     this.articlesService = articlesService;
     this.route = route;

@@ -2,9 +2,9 @@
 
 import { Component } from '@angular/core';
 
-import { ArticlesService } from './articles.service';
-import { ArticleEditComponent } from './article-edit.component';
-import { LoginService } from './login.service';
+import ArticlesService from './articles.service';
+import ArticleEditComponent from './article-edit.component';
+import LoginService from './login.service';
 
 import template from './articles.template.html';
 
@@ -12,7 +12,7 @@ import template from './articles.template.html';
   selector: 'articles',
   template,
 })
-export class ArticlesComponent {
+export default class ArticlesComponent {
   constructor(articlesService: ArticlesService, loginService: LoginService) {
     this.articlesService = articlesService;
     this.loginService = loginService;

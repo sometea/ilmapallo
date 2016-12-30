@@ -3,17 +3,17 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { FileUploader } from 'ng2-file-upload';
 
-import { ImagesService } from './images.service';
-import { LoginService } from './login.service';
+import ImagesService from './images.service';
+import LoginService from './login.service';
 import template from './image-edit.template.html';
 
 @Component({
   selector: 'image-edit',
   template,
 })
-export class ImageEditComponent {
+export default class ImageEditComponent {
   @Input() image;
-  @Output() onRefresh = new EventEmitter;
+  @Output() onRefresh = new EventEmitter();
 
   constructor(imagesService: ImagesService, loginService: LoginService) {
     this.imagesService = imagesService;
@@ -49,4 +49,3 @@ export class ImageEditComponent {
     }
   }
 }
-

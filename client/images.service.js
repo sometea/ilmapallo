@@ -4,10 +4,10 @@ import { Injectable } from '@angular/core';
 import { Headers, Http } from '@angular/http';
 import 'rxjs/add/operator/catch';
 
-import { LoginService } from './login.service';
+import LoginService from './login.service';
 
 @Injectable()
-export class ImagesService {
+export default class ImagesService {
   imagesUrl = '/api/images/';
 
   constructor(http: Http, loginService: LoginService) {

@@ -5,7 +5,7 @@ import { Headers, Http } from '@angular/http';
 import 'rxjs/add/operator/toPromise';
 
 @Injectable()
-export class LoginService {
+export default class LoginService {
   constructor(http: Http) {
     this.http = http;
     this.jwtToken = '';

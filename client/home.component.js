@@ -3,8 +3,8 @@
 import { Component } from '@angular/core';
 import { ROUTER_DIRECTIVES } from '@angular/router';
 
-import { ImagesService } from './images.service';
-import { ArticlesService } from './articles.service';
+import ImagesService from './images.service';
+import ArticlesService from './articles.service';
 
 import template from './home.template.html';
 
@@ -12,7 +12,7 @@ import template from './home.template.html';
   selector: 'home',
   template,
 })
-export class HomeComponent {
+export default class HomeComponent {
   constructor(articlesService: ArticlesService) {
     this.articlesService = articlesService;
   }

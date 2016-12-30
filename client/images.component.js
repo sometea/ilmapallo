@@ -2,9 +2,9 @@
 
 import { Component } from '@angular/core';
 
-import { ImagesService } from './images.service';
-import { ImageEditComponent } from './image-edit.component';
-import { LoginService } from './login.service';
+import ImagesService from './images.service';
+import ImageEditComponent from './image-edit.component';
+import LoginService from './login.service';
 
 import template from './images.template.html';
 
@@ -13,7 +13,7 @@ import template from './images.template.html';
   selector: 'images',
   template,
 })
-export class ImagesComponent {
+export default class ImagesComponent {
   constructor(imagesService: ImagesService, loginService: LoginService) {
     this.imagesService = imagesService;
     this.loginService = loginService;

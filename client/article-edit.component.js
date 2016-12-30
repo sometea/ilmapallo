@@ -2,16 +2,16 @@
 
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 
-import { ArticlesService } from './articles.service';
+import ArticlesService from './articles.service';
 import template from './article-edit.template.html';
 
 @Component({
   selector: 'article-edit',
   template,
 })
-export class ArticleEditComponent {
+export default class ArticleEditComponent {
   @Input() article;
-  @Output() onRefresh = new EventEmitter;
+  @Output() onRefresh = new EventEmitter();
 
   constructor(articlesService: ArticlesService) {
     this.articlesService = articlesService;
