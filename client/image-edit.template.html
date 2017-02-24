@@ -6,7 +6,7 @@
     <img *ngIf="!!image.filename" width="200px" src="uploads/{{ image.filename }}" alt="{{ image.filename }}" />
   </p>
   <p>
-    <input type="file" ng2FileSelect [uploader]="uploader" />
+    <input type="file" ng2FileSelect  />  <!-- TODO: [uploader]="uploader" -->
   </p>
   <p>
     <button type="button" class="btn btn-success" (click)="uploader.uploadAll()">Upload</button>

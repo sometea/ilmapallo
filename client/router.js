@@ -2,11 +2,11 @@
 
 import { Routes, RouterModule } from '@angular/router';
 
-import { ArticlesComponent } from './articles.component';
-import { ArticleDetailComponent } from './article-detail.component';
-import { ImagesComponent } from './images.component';
-import { LoginComponent } from './login.component';
-import { HomeComponent } from './home.component';
+import ArticlesComponent from './articles.component';
+import ArticleDetailComponent from './article-detail.component';
+import ImagesComponent from './images.component';
+import LoginComponent from './login.component';
+import HomeComponent from './home.component';
 
 const appRoutes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full', terminal: true },
@@ -21,4 +21,3 @@ const appRoutes: Routes = [
 export const routing = RouterModule.forRoot(appRoutes);
 
 export const appRoutingProviders = [];
-
